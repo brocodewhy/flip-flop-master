@@ -1,0 +1,2316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="images/favicon.jpg">
+    <link rel="apple-touch-icon" href="images/favicon.jpg">
+
+    <body class="animated-bg">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip Flop Master - Learn Digital Flip-Flops</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+.animated-text {
+  display: inline-block;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #4CAF51;
+  border-right: 3px solid #fff; /* cursor effect */
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 2s steps(20) 1s 1 normal both, blink 0.7s step-end infinite;
+}
+
+/* Typing effect */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Cursor blink */
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+.fade-in-bottom {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInBottom 0.5s ease forwards;
+  animation-delay: 0.5s; /* You can change delay */
+}
+
+@keyframes fadeInBottom {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animated-bg {
+  background: linear-gradient(-45deg, #1a1a2e, #162447, #1f4068, #e43f5a);
+  background-size: 400% 400%;
+  animation: gradientBG 7s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
+ .social-icons {
+  margin-top: 1.2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+/* circle button */
+.icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: #fff;
+  background: #222;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(15px) scale(0.9);
+}
+
+.button, .submit-btn {
+  transition: all 0.3s ease;
+}
+
+.button:hover, .submit-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #ff6ec4, #7873f5, #42e695);
+  color: white;
+}
+
+/* hover effect */
+.icon:hover {
+  transform: scale(1.15);
+}
+
+/* brand colors */
+.icon.github { background: #333; }
+.icon.linkedin { background: #0a66c2; }
+
+        :root {
+            --primary-dark: #1B3C53;
+            --primary-medium: #234C6A;
+            --primary-light: #456882;
+            --secondary: #3D2C1B;
+            --accent: #4CAF50;
+            --accent-light: #80E27E;
+            --text-light: #F5F7FA;
+            --text-gray: #B0BEC5;
+            --card-bg: #1E2D3E;
+            --hover-bg: #2A3B4E;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --shadow-light: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--accent-light);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            color: var(--text-light);
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text-gray);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .ripple-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-btn::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.6s, opacity 1s;
+}
+
+.ripple-btn:active::after {
+  transform: scale(4);
+  opacity: 1;
+  transition: 0s;
+}
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(27, 60, 83, 0.95);
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 2.2rem;
+            color: var(--accent);
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-light);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-medium) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23456882' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-light);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            color: var(--primary-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        /* Content Cards */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .cards-container {
+            display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px var(--shadow);
+            transition: all 0.4s ease;
+            border-left: 5px solid var(--accent);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow);
+            background-color: var(--hover-bg);
+        }
+
+        .card h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.2rem;
+        }
+
+        .card-icon {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--card-bg);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--primary-light);
+        }
+
+        th {
+            background-color: var(--primary-medium);
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: var(--hover-bg);
+        }
+
+        .highlight {
+            background-color: rgba(76, 175, 80, 0.1);
+            font-weight: 500;
+        }
+
+        /* Interactive Lab */
+        .lab-section {
+            background: linear-gradient(135deg, var(--primary-medium) 0%, var(--primary-dark) 100%);
+            padding: 100px 0;
+        }
+
+        .simulator-container {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 15px 30px var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .flip-flop-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .ff-option {
+            flex: 1;
+            min-width: 120px;
+            background-color: var(--primary-medium);
+            border: none;
+            color: var(--text-light);
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .ff-option:hover {
+            background-color: var(--primary-light);
+        }
+
+        .ff-option.active {
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            color: var(--primary-dark);
+            box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+        }
+
+        .simulator-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .flip-flop-visual {
+            width: 300px;
+            height: 200px;
+            background-color: var(--primary-dark);
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 8px 20px var(--shadow);
+            border: 3px solid var(--primary-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ff-gate {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .io-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .inputs, .outputs {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .io-label {
+            font-weight: 600;
+            color: var(--accent-light);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .io-control {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .io-name {
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 600;
+            min-width: 40px;
+        }
+
+        .toggle-btn {
+            width: 60px;
+            height: 30px;
+            background-color: var(--primary-medium);
+            border-radius: 15px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn.active {
+            background-color: var(--accent);
+        }
+
+        .toggle-knob {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background-color: var(--text-light);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn.active .toggle-knob {
+            left: 33px;
+        }
+
+        .output-value {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-dark);
+            border-radius: 8px;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .output-value.high {
+            color: var(--accent-light);
+            box-shadow: 0 0 10px rgba(128, 226, 126, 0.5);
+        }
+
+        .output-value.low {
+            color: var(--text-gray);
+        }
+
+        .clock-pulse {
+            width: 200px;
+            height: 60px;
+            background-color: var(--primary-dark);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin: 1rem auto;
+            border: 2px solid var(--primary-light);
+        }
+
+        .pulse-visual {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.8); opacity: 0.7; }
+        }
+
+        .control-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .control-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .reset-btn {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .reset-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        .experiment-btn {
+            background-color: var(--primary-light);
+            color: var(--text-light);
+        }
+
+        .experiment-btn:hover {
+            background-color: var(--primary-medium);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            color: var(--accent-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-light);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* About & Contact Pages */
+        .about-section, .contact-section {
+            padding: 150px 0 100px;
+        }
+
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 350px;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+
+        .team-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            color: var(--primary-dark);
+        }
+
+        .contact-form {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid var(--primary-light);
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            color: var(--primary-dark);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.4rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .io-container {
+                flex-direction: column;
+                gap: 2rem;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-dark);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 20px var(--shadow);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.4s ease;
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .flip-flop-selector {
+                flex-direction: column;
+            }
+            
+            .ff-option {
+                min-width: 100%;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .about-section, .contact-section {
+                padding: 130px 0 80px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            .container {
+                width: 95%;
+                padding: 0 15px;
+            }
+            
+            .card, .simulator-container, .contact-form {
+                padding: 1.5rem;
+            }
+            
+            .flip-flop-visual {
+                width: 250px;
+                height: 180px;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .stagger-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Page Transition */
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted var(--accent);
+            cursor: help;
+        }
+        
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 250px;
+            background-color: var(--card-bg);
+            color: var(--text-light);
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 5px 15px var(--shadow);
+            font-size: 0.9rem;
+            border: 1px solid var(--primary-light);
+        }
+        
+        .tooltip .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--card-bg) transparent transparent transparent;
+        }
+        
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Read More Toggle */
+        .read-more-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .read-more-content.expanded {
+            max-height: 1000px;
+        }
+        
+        .read-more-toggle {
+            color: var(--accent);
+            cursor: pointer;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+        
+        .read-more-toggle:hover {
+            color: var(--accent-light);
+        }
+
+        /* Note Box */
+        .note-box {
+            background-color: rgba(59, 89, 152, 0.2);
+            border-left: 4px solid #3B5998;
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 2rem 0;
+        }
+        
+        .note-title {
+            color: #8B9DC3;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+#bg-particles {
+    position: fixed;      /* stay fixed behind everything */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;          /* behind all content */
+    pointer-events: none; /* don't block clicks */
+}
+    </style>
+</head>
+<body>
+<canvas id="bg-particles"></canvas>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+    <!-- Header & Navigation -->
+    <header>
+        
+        <div class="container header-container">
+            <a href="#" class="logo" data-page="home">
+                <div class="logo-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <div class="logo-text">Flip <span>Flop</span> Master</div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="flip-flops">Flip-Flops</a></li>
+                <li><a href="#" class="nav-link" data-page="interactive-lab">Interactive Lab</a></li>
+                <li><a href="#" class="nav-link" data-page="about">About Us</a></li>
+                <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <section id="home" class="page active">
+        <div class="hero">
+            <div class="container hero-content fade-in">
+                <h1 class="animated-text">Master Digital Flip-Flops</h1>
+                <p>An interactive learning platform designed for engineering students and beginners to understand digital flip-flops through clear explanations, visual demonstrations, and hands-on experimentation.</p>
+                <a href="#" class="cta-button" data-page="flip-flops">Start Learning Now</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2 class="fade-in-bottom">What You Will Learn</h2>
+                    <p class="fade-in-bottom">Comprehensive coverage of all major flip-flop types and their applications</p>
+                </div>
+                
+                <div class="cards-container">
+                    <div class="card stagger-item">
+                        <h3><i class="fas fa-info-circle card-icon"></i> Basic Concepts</h3>
+                        <p>Understand what flip-flops are, how they work as fundamental memory elements in digital circuits, and their role in sequential logic design.</p>
+                    </div>
+                    
+                    <div class="card stagger-item">
+                        <h3><i class="fas fa-project-diagram card-icon"></i> Types of Flip-Flops</h3>
+                        <p>Learn about SR, JK, D, and T flip-flops - their working principles, truth tables, characteristic equations, and excitation tables.</p>
+                    </div>
+                    
+                    <div class="card stagger-item">
+                        <h3><i class="fas fa-table card-icon"></i> Truth Tables & Comparisons</h3>
+                        <p>Master the truth tables for all flip-flop types and understand their differences, advantages, and limitations through comprehensive comparison tables.</p>
+                    </div>
+                    
+                    <div class="card stagger-item">
+                        <h3><i class="fas fa-laptop-code card-icon"></i> Interactive Simulations</h3>
+                        <p>Experiment with different flip-flop types in our virtual lab. Toggle inputs, observe outputs in real-time, and deepen your understanding through hands-on practice.</p>
+                    </div>
+                    
+                    <div class="card stagger-item">
+                        <h3><i class="fas fa-lightbulb card-icon"></i> Real-World Applications</h3>
+                        <p>Discover how flip-flops are used in practical digital systems like counters, registers, memory units, and frequency dividers.</p>
+                    </div>
+                    
+                    <div class="card stagger-item">
+                        <h3><i class="fas fa-clipboard-check card-icon"></i> Exam Preparation</h3>
+                        <p>Focus on important notes and exam-oriented points to help you excel in your digital electronics courses and competitive exams.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flip-Flops Page -->
+    <section id="flip-flops" class="page">
+        <div class="section about-section">
+            <div class="container">
+                <h2 class="fade-in-bottom">Understanding Flip-Flops</h2>
+                <p>Flip-flops are fundamental building blocks of digital electronics that serve as basic memory elements. They are bistable multivibrators that can store one bit of information, making them essential for sequential logic circuits.</p>
+                
+                <div class="cards-container">
+                    <div class="card">
+                        <h3><i class="fas fa-memory card-icon"></i> What is a Flip-Flop?</h3>
+                        <p>A flip-flop is a basic memory element used in digital electronics.<br>
+                        It is a sequential circuit that can store exactly one bit of information — either 0 or 1.</p>
+                        
+                        <div class="read-more-content" id="ff-basic-more">
+                            <p>Key Points (easy to remember)<br>
+
+✅ Stores 1 bit of data<br>
+
+✅ Has two stable states (0 and 1) → bistable<br>
+
+✅ Output depends on current input AND previous state<br>
+
+✅ Controlled by a clock signal<br>
+
+✅ Building block of sequential circuits</p>
+                            <p>Types of Flip-Flops : <br>
+
+SR Flip-Flop – Set & Reset<br>
+
+JK Flip-Flop – No invalid state<br>
+
+D Flip-Flop – Data storage<br>
+
+T Flip-Flop – Toggle operation</p>
+                        </div>
+                        <span class="read-more-toggle" data-target="ff-basic-more">Read More</span>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-exchange-alt card-icon"></i> How Flip-Flops Work</h3>
+                        <p>A flip-flop works by storing one bit of data and changing its output only when a clock signal is applied. It uses feedback to remember its previous state.</p>
+                        
+                        <div class="read-more-content" id="ff-work-more">
+                            <p>Step By Step Working<p>
+
+<ol>
+  <li><strong>Inputs are applied:</strong> Signals like S, R, J, K, D, or T are given to the flip-flop.</li>
+
+  <li><strong>Clock signal arrives:</strong> The flip-flop checks inputs only at a specific clock edge.</li>
+
+  <li><strong>State decision is made:</strong> Based on inputs and previous state, the output changes or remains same.</li>
+
+  <li><strong>Output is stored:</strong> The output is held until the next clock pulse.</li>
+</ol>
+
+
+                            <p>The clock signal ensures all flip-flops in a system change state simultaneously, enabling synchronous operation.</p>
+                        </div>
+                        <span class="read-more-toggle" data-target="ff-work-more">Read More</span>
+                    </div>
+                </div>
+                
+                <h2 style="margin-top: 3rem;">Types of Flip-Flops</h2>
+                
+                <div class="flip-flop-selector" style="margin-top: 2rem; margin-bottom: 3rem;">
+                    <button class="ff-option active" data-ff-type="sr">SR Flip-Flop</button>
+                    <button class="ff-option" data-ff-type="jk">JK Flip-Flop</button>
+                    <button class="ff-option" data-ff-type="d">D Flip-Flop</button>
+                    <button class="ff-option" data-ff-type="t">T Flip-Flop</button>
+                </div>
+                
+                <!-- SR Flip-Flop Content -->
+                <div id="sr-content" class="ff-content active">
+                    <div class="card">
+                        <h3><i class="fas fa-toggle-on card-icon"></i> SR Flip-Flop</h3>
+                        <p>The SR (Set-Reset) flip-flop is the most basic type with two inputs: S (Set) and R (Reset). When S=1 and R=0, the flip-flop sets to 1. When S=0 and R=1, it resets to 0. The condition S=1, R=1 is usually prohibited.</p>
+                        
+                        <h4>Truth Table</h4>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Clock</th>
+                                        <th>S</th>
+                                        <th>R</th>
+                                        <th>Q(t+1)</th>
+                                        <th>Operation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>↑ or 1</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>Q(t)</td>
+                                        <td>No Change</td>
+                                    </tr>
+                                    <tr class="highlight">
+                                        <td>↑ or 1</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>Set</td>
+                                    </tr>
+                                    <tr>
+                                        <td>↑ or 1</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>Reset</td>
+                                    </tr>
+                                    <tr>
+                                        <td>↑ or 1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>X (Invalid)</td>
+                                        <td>Prohibited</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <h4>Applications</h4>
+                        <ul>
+                            <li>Basic storage element in registers</li>
+                            <li>Switch debouncing circuits</li>
+                            <li>Control circuits with set/reset functions</li>
+                        </ul>
+                        
+                        <div class="note-box">
+                            <div class="note-title"><i class="fas fa-exclamation-circle"></i> Important Note</div>
+                            <p>The SR flip-flop has a forbidden state (S=1, R=1) which creates an indeterminate output. This limitation led to the development of the JK flip-flop.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- JK Flip-Flop Content -->
+                <div id="jk-content" class="ff-content">
+                    <div class="card">
+                        <h3><i class="fas fa-sync-alt card-icon"></i> JK Flip-Flop</h3>
+                        <p>The JK flip-flop eliminates the forbidden state of the SR flip-flop. When both J and K are 1, the flip-flop toggles (changes to the opposite state). This makes it more versatile than the SR flip-flop.</p>
+                        
+                        <h4>Truth Table</h4>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Clock</th>
+                                        <th>J</th>
+                                        <th>K</th>
+                                        <th>Q(t+1)</th>
+                                        <th>Operation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>↑ or 1</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>Q(t)</td>
+                                        <td>No Change</td>
+                                    </tr>
+                                    <tr>
+                                        <td>↑ or 1</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>Reset</td>
+                                    </tr>
+                                    <tr class="highlight">
+                                        <td>↑ or 1</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>Set</td>
+                                    </tr>
+                                    <tr>
+                                        <td>↑ or 1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>Q'(t)</td>
+                                        <td>Toggle</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <h4>Applications</h4>
+                        <ul>
+                            <li>Counters and frequency dividers</li>
+                            <li>Shift registers</li>
+                            <li>Memory units</li>
+                            <li>Control circuits</li>
+                        </ul>
+                        
+                        <div class="note-box">
+                            <div class="note-title"><i class="fas fa-lightbulb"></i> Exam Point</div>
+                            <p>JK flip-flop is considered a universal flip-flop because it can be configured to emulate SR, D, and T flip-flops. This makes it extremely versatile in digital design.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- D Flip-Flop Content -->
+                <div id="d-content" class="ff-content">
+                    <div class="card">
+                        <h3><i class="fas fa-database card-icon"></i> D Flip-Flop</h3>
+                        <p>The D (Data) flip-flop has a single data input. The output Q takes the value of D at the clock edge. This simple operation makes it ideal for data storage and transfer applications.</p>
+                        
+                        <h4>Truth Table</h4>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Clock</th>
+                                        <th>D</th>
+                                        <th>Q(t+1)</th>
+                                        <th>Operation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>↑ or 1</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>Reset</td>
+                                    </tr>
+                                    <tr class="highlight">
+                                        <td>↑ or 1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>Set</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <h4>Applications</h4>
+                        <ul>
+                            <li>Data registers and buffers</li>
+                            <li>Delay circuits</li>
+                            <li>Serial-to-parallel converters</li>
+                            <li>Memory address registers</li>
+                        </ul>
+                        
+                        <div class="note-box">
+                            <div class="note-title"><i class="fas fa-rocket"></i> Real-World Use</div>
+                            <p>D flip-flops are extensively used in microprocessor systems for temporary data storage, pipeline registers, and interface circuits due to their simplicity and reliability.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- T Flip-Flop Content -->
+                <div id="t-content" class="ff-content">
+                    <div class="card">
+                        <h3><i class="fas fa-retweet card-icon"></i> T Flip-Flop</h3>
+                        <p>The T (Toggle) flip-flop has a single input T. When T=1, the flip-flop toggles on each clock pulse. When T=0, it maintains its current state. This makes it ideal for counting applications.</p>
+                        
+                        <h4>Truth Table</h4>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Clock</th>
+                                        <th>T</th>
+                                        <th>Q(t+1)</th>
+                                        <th>Operation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>↑ or 1</td>
+                                        <td>0</td>
+                                        <td>Q(t)</td>
+                                        <td>No Change</td>
+                                    </tr>
+                                    <tr class="highlight">
+                                        <td>↑ or 1</td>
+                                        <td>1</td>
+                                        <td>Q'(t)</td>
+                                        <td>Toggle</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <h4>Applications</h4>
+                        <ul>
+                            <li>Binary counters</li>
+                            <li>Frequency dividers (divide by 2)</li>
+                            <li>Control circuits requiring toggling action</li>
+                        </ul>
+                        
+                        <div class="note-box">
+                            <div class="note-title"><i class="fas fa-calculator"></i> Design Tip</div>
+                            <p>T flip-flops can be created from JK flip-flops by connecting J and K together. This is a common exam question in digital electronics courses.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 style="margin-top: 3rem;">Comparison Table</h2>
+                
+                <div class="card" style="margin-top: 2rem;">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Flip-Flop Type</th>
+                                    <th>Inputs</th>
+                                    <th>Key Feature</th>
+                                    <th>Advantages</th>
+                                    <th>Disadvantages</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>SR</strong></td>
+                                    <td>S, R</td>
+                                    <td>Basic set-reset operation</td>
+                                    <td>Simple, easy to understand</td>
+                                    <td>Forbidden state (S=R=1)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>JK</strong></td>
+                                    <td>J, K</td>
+                                    <td>Toggles when J=K=1</td>
+                                    <td>No forbidden state, versatile</td>
+                                    <td>More complex than SR</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>D</strong></td>
+                                    <td>D</td>
+                                    <td>Q follows D at clock edge</td>
+                                    <td>Simple, eliminates timing problems</td>
+                                    <td>No toggle capability</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>T</strong></td>
+                                    <td>T</td>
+                                    <td>Toggles when T=1</td>
+                                    <td>Ideal for counters</td>
+                                    <td>Limited functionality</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Lab Page -->
+    <section id="interactive-lab" class="page">
+        <div class="section lab-section">
+            <div class="container">
+                <div class="section-title"><br>
+                    <h2 class="fade-in-bottom">Interactive Flip-Flop Lab</h2>
+                    <p>Experiment with different flip-flop types in real-time. Toggle inputs and observe how outputs change.</p>
+                </div>
+                
+                <div class="simulator-container">
+                    <h3>Select Flip-Flop Type</h3>
+                    <div class="flip-flop-selector" id="simulatorSelector">
+                        <button class="ff-option active" data-ff-type="sr">SR Flip-Flop</button>
+                        <button class="ff-option" data-ff-type="jk">JK Flip-Flop</button>
+                        <button class="ff-option" data-ff-type="d">D Flip-Flop</button>
+                        <button class="ff-option" data-ff-type="t">T Flip-Flop</button>
+                    </div>
+                    
+                    <div class="simulator-area">
+                        <div class="flip-flop-visual">
+                            <div class="ff-gate" id="gateLabel">SR Flip-Flop</div>
+                        </div>
+                        
+                        <div class="clock-pulse">
+                            <div class="pulse-visual"></div>
+                        </div>
+                        
+                        <div class="io-container">
+                            <div class="inputs">
+                                <h4>Inputs</h4>
+                                
+                                <!-- SR Inputs -->
+                                <div class="io-control sr-input">
+                                    <span class="io-label">S (Set):</span>
+                                    <div class="io-control">
+                                        <span class="io-name">S</span>
+                                        <div class="toggle-btn" id="toggleS">
+                                            <div class="toggle-knob"></div>
+                                        </div>
+                                        <span class="tooltip">
+                                            <i class="fas fa-question-circle"></i>
+                                            <span class="tooltip-text">Set input: When HIGH (1) and R is LOW, sets Q to 1</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="io-control sr-input">
+                                    <span class="io-label">R (Reset):</span>
+                                    <div class="io-control">
+                                        <span class="io-name">R</span>
+                                        <div class="toggle-btn" id="toggleR">
+                                            <div class="toggle-knob"></div>
+                                        </div>
+                                        <span class="tooltip">
+                                            <i class="fas fa-question-circle"></i>
+                                            <span class="tooltip-text">Reset input: When HIGH (1) and S is LOW, resets Q to 0</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <!-- JK Inputs -->
+                                <div class="io-control jk-input" style="display: none;">
+                                    <span class="io-label">J (Set):</span>
+                                    <div class="io-control">
+                                        <span class="io-name">J</span>
+                                        <div class="toggle-btn" id="toggleJ">
+                                            <div class="toggle-knob"></div>
+                                        </div>
+                                        <span class="tooltip">
+                                            <i class="fas fa-question-circle"></i>
+                                            <span class="tooltip-text">Set input: Similar to S in SR flip-flop</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="io-control jk-input" style="display: none;">
+                                    <span class="io-label">K (Reset):</span>
+                                    <div class="io-control">
+                                        <span class="io-name">K</span>
+                                        <div class="toggle-btn" id="toggleK">
+                                            <div class="toggle-knob"></div>
+                                        </div>
+                                        <span class="tooltip">
+                                            <i class="fas fa-question-circle"></i>
+                                            <span class="tooltip-text">Reset input: Similar to R in SR flip-flop</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <!-- D Input -->
+                                <div class="io-control d-input" style="display: none;">
+                                    <span class="io-label">D (Data):</span>
+                                    <div class="io-control">
+                                        <span class="io-name">D</span>
+                                        <div class="toggle-btn" id="toggleD">
+                                            <div class="toggle-knob"></div>
+                                        </div>
+                                        <span class="tooltip">
+                                            <i class="fas fa-question-circle"></i>
+                                            <span class="tooltip-text">Data input: Q takes the value of D at clock edge</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <!-- T Input -->
+                                <div class="io-control t-input" style="display: none;">
+                                    <span class="io-label">T (Toggle):</span>
+                                    <div class="io-control">
+                                        <span class="io-name">T</span>
+                                        <div class="toggle-btn" id="toggleT">
+                                            <div class="toggle-knob"></div>
+                                        </div>
+                                        <span class="tooltip">
+                                            <i class="fas fa-question-circle"></i>
+                                            <span class="tooltip-text">Toggle input: When HIGH, output toggles at clock edge</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Clock Input -->
+                                <div class="io-control">
+                                    <span class="io-label">Clock:</span>
+                                    <div class="io-control">
+                                        <span class="io-name">CLK</span>
+                                        <div class="toggle-btn active" id="toggleClk">
+                                            <div class="toggle-knob"></div>
+                                        </div>
+                                        <span class="tooltip">
+                                            <i class="fas fa-question-circle"></i>
+                                            <span class="tooltip-text">Clock signal: Triggers state changes on rising edge</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="outputs">
+                                <h4>Outputs</h4>
+                                
+                                <div class="io-control">
+                                    <span class="io-label">Q (Output):</span>
+                                    <div class="io-control">
+                                        <span class="io-name">Q</span>
+                                        <div class="output-value low" id="outputQ">0</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="io-control">
+                                    <span class="io-label">Q' (Complement):</span>
+                                    <div class="io-control">
+                                        <span class="io-name">Q'</span>
+                                        <div class="output-value high" id="outputQNot">1</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="io-control">
+                                    <span class="io-label">Current State:</span>
+                                    <div class="io-control">
+                                        <div class="output-value low" id="currentState">Reset (0)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="control-buttons">
+                            <button  class="control-btn reset-btn" id="resetSimulator">
+                                <i class="fas fa-redo"></i> Reset Simulator
+                            </button>
+                            <button class="control-btn experiment-btn" id="randomExperiment">
+                                <i class="fas fa-random"></i> Random Experiment
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="simulation-info card" style="margin-top: 2rem;">
+                        <h4><i class="fas fa-info-circle"></i> Simulation Guide</h4>
+                        <p>1. Select a flip-flop type from the buttons above.</p>
+                        <p>2. Toggle the input switches to change their state (0 or 1).</p>
+                        <p>3. Toggle the clock switch to simulate a clock pulse (rising edge triggers state change).</p>
+                        <p>4. Observe how the outputs Q and Q' change based on inputs and clock.</p>
+                        <p>5. Use the Reset button to clear all inputs and outputs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Page -->
+    <section id="about" class="page">
+        <div class="section about-section">
+            <div class="container">
+                <h2 class="fade-in-bottom">About Flip Flop Master</h2>
+                <p>Flip Flop Master is an educational platform designed to make learning digital electronics simple, interactive, and fun. Our focus is on flip-flops and sequential circuits, helping students understand these foundational concepts.</p>
+                
+                <div class="cards-container" style="margin-top: 3rem;">
+                    <div class="card">
+                        <h3><i class="fas fa-bullseye card-icon"></i> Our Mission</h3>
+                        <p>To make flip-flops and sequential circuits simple, visual, and easy to understand through clear explanations, examples, and interactive learning.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-eye card-icon"></i> Our Vision</h3>
+                        <p>To become a go-to learning platform for digital electronics where students learn concepts clearly, confidently, and practically.</p>
+                    </div>
+                </div>
+                
+                <h2 style="margin-top: 3rem;">Meet Our Team</h2>
+<div class="team-container" style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;">
+  
+  <!-- Card 1 -->
+  <div class="team-card" style="background:#1B211A; padding:1.5rem; border-radius:1rem; text-align:center; width:250px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+    <div class="team-img" style="font-size:3rem; margin-bottom:1rem;">
+      <i class="fas fa-user"></i>
+    </div>
+    <div class="social-icons" style="display:flex; justify-content:center; gap:1rem; margin-bottom:1rem;">
+      <a href="https://github.com/brocodewhy" target="_blank" class="icon github" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#f0f0f0; color:#333; transition:0.3s;"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/ahmad-sarve-19ba51389/" target="_blank" class="icon linkedin" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#f0f0f0; color:#333; transition:0.3s;"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <h3>Ahmad Sarve</h3>
+    <p><strong>PRN : 125B1B285</strong></p>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="team-card" style="background:#1B211A; padding:1.5rem; border-radius:1rem; text-align:center; width:250px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+    <div class="team-img" style="font-size:3rem; margin-bottom:1rem;">
+      <i class="fas fa-user"></i>
+    </div>
+    <div class="social-icons" style="display:flex; justify-content:center; gap:1rem; margin-bottom:1rem;">
+      <a href="https://github.com/Adityacode5855" target="_blank" class="icon github" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#f0f0f0; color:#333; transition:0.3s;"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/aditya-bodkhe-097599397?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="icon linkedin" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#f0f0f0; color:#333; transition:0.3s;"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <h3>Aditya Bodkhe</h3>
+    <p><strong>PRN : 125B1B029</strong></p>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="team-card" style="background:#1B211A; padding:1.5rem; border-radius:1rem; text-align:center; width:250px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+    <div class="team-img" style="font-size:3rem; margin-bottom:1rem;">
+      <i class="fas fa-user"></i>
+    </div>
+    <div class="social-icons" style="display:flex; justify-content:center; gap:1rem; margin-bottom:1rem;">
+      <a href="https://github.com/nileshh95" target="_blank" class="icon github" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#f0f0f0; color:#333; transition:0.3s;"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/nilesh-mane-69221b394?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="icon linkedin" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#f0f0f0; color:#333; transition:0.3s;"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <h3>Nilesh Mane</h3>
+    <p><strong>PRN : 125B1B023</strong></p>
+  </div>
+
+
+    <div class="team-card" style="background:#1B211A; padding:1.5rem; border-radius:1rem; text-align:center; width:250px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+    <div class="team-img" style="font-size:3rem; margin-bottom:1rem;">
+      <i class="fas fa-user"></i>
+    </div>
+    <div class="social-icons" style="display:flex; justify-content:center; gap:1rem; margin-bottom:1rem;">
+      <a href="https://github.com/prajwal778" target="_blank" class="icon github" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#f0f0f0; color:#333; transition:0.3s;"><i class="fab fa-github"></i></a>
+      <a href="https://in.linkedin.com/in/prajwal-kharche-947808336" target="_blank" class="icon linkedin" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#f0f0f0; color:#333; transition:0.3s;"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <h3>Prajwal Kharche</h3>
+    <p><strong>PRN : 125B1B026</strong></p>
+  </div>
+
+
+    <div class="team-card" style="background:#1B211A; padding:1.5rem; border-radius:1rem; text-align:center; width:250px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+    <div class="team-img" style="font-size:3rem; margin-bottom:1rem;">
+      <i class="fas fa-user"></i>
+    </div>
+    <div class="social-icons" style="display:flex; justify-content:center; gap:1rem; margin-bottom:1rem;">
+      <a href="https://github.com/Sidharth18-sid" target="_blank" class="icon github" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#f0f0f0; color:#333; transition:0.3s;"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/sidharth-pawar-262aab3a0?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="icon linkedin" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#f0f0f0; color:#333; transition:0.3s;"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <h3>Siddhart Pawar</h3>
+    <p><strong>PRN : 125B1B038</strong></p>
+  </div>
+</div><br><br>
+</section>
+
+    <!-- Contact Page -->
+    <section id="contact" class="page">
+        <div class="section contact-section">
+            <div class="container">
+                <h2 class="fade-in-bottom">Contact Us</h2>
+                <p>Have questions, suggestions, or need clarification on flip-flop concepts? Reach out to us! We're here to help you master digital electronics.</p>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" id="name" class="form-input" placeholder="Enter your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" class="form-input" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" class="form-input" placeholder="What is your message about?" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" class="form-textarea" placeholder="Please provide details about your query or feedback..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="cards-container" style="margin-top: 3rem;">
+                    <div class="card">
+                        <h3><i class="fas fa-envelope card-icon"></i> Email Us</h3>
+                        <p>For general inquiries: <strong>info@flipflopmaster.com</strong></p>
+                        <p>For educational support: <strong>support@flipflopmaster.com</strong></p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-clock card-icon"></i> Response Time</h3>
+                        <p>We strive to respond to all queries within 24-48 hours. For urgent academic questions, please mention "URGENT" in your subject line.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-hands-helping card-icon"></i> Academic Help</h3>
+                        <p>Stuck on a flip-flop problem? Send us your question and we'll provide a detailed explanation to help you understand the concept.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Flip Flop Master</h3>
+                    <p>Your comprehensive guide to mastering digital flip-flops and sequential logic design through interactive learning.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" data-page="home">Home</a></li>
+                        <li><a href="#" data-page="flip-flops">Flip-Flops Guide</a></li>
+                        <li><a href="#" data-page="interactive-lab">Interactive Lab</a></li>
+                        <li><a href="#" data-page="about">About Us</a></li>
+                        <li><a href="#" data-page="contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Flip-Flop Types</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" data-page="flip-flops" data-ff-type="sr">SR Flip-Flop</a></li>
+                        <li><a href="#" data-page="flip-flops" data-ff-type="jk">JK Flip-Flop</a></li>
+                        <li><a href="#" data-page="flip-flops" data-ff-type="d">D Flip-Flop</a></li>
+                        <li><a href="#" data-page="flip-flops" data-ff-type="t">T Flip-Flop</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Flip Flop Master. All rights reserved. Designed by students of PCCOE Pune</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        const navLinkItems = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+        const ffOptions = document.querySelectorAll('.ff-option');
+        const ffContents = document.querySelectorAll('.ff-content');
+        const toggleButtons = document.querySelectorAll('.toggle-btn');
+        const outputQ = document.getElementById('outputQ');
+        const outputQNot = document.getElementById('outputQNot');
+        const currentState = document.getElementById('currentState');
+        const resetBtn = document.getElementById('resetSimulator');
+        const randomExperimentBtn = document.getElementById('randomExperiment');
+        const gateLabel = document.getElementById('gateLabel');
+        const contactForm = document.getElementById('contactForm');
+        const readMoreToggles = document.querySelectorAll('.read-more-toggle');
+        const fadeInElements = document.querySelectorAll('.fade-in');
+        const staggerItems = document.querySelectorAll('.stagger-item');
+        
+        // Current simulator state
+        let simulatorState = {
+            type: 'sr',
+            s: false,
+            r: false,
+            j: false,
+            k: false,
+            d: false,
+            t: false,
+            clk: true,
+            q: false,
+            prevClk: true
+        };
+        
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Page navigation
+        document.querySelectorAll('.nav-link, .logo, .cta-button, .footer-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                
+                // Get target page
+                const targetPage = link.getAttribute('data-page') || 'home';
+                
+                // Update active nav link
+                navLinkItems.forEach(item => item.classList.remove('active'));
+                if (link.classList.contains('nav-link')) {
+                    link.classList.add('active');
+                } else {
+                    // Find the corresponding nav link
+                    document.querySelector(`.nav-link[data-page="${targetPage}"]`)?.classList.add('active');
+                }
+                
+                // Hide all pages
+                pages.forEach(page => page.classList.remove('active'));
+                
+                // Show target page
+                document.getElementById(targetPage).classList.add('active');
+                
+                // If going to flip-flops page with specific type
+                const ffType = link.getAttribute('data-ff-type');
+                if (ffType && targetPage === 'flip-flops') {
+                    setTimeout(() => {
+                        selectFlipFlopType(ffType);
+                    }, 100);
+                }
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+        
+        // Flip-flop type selection (content page)
+        document.querySelectorAll('.flip-flop-selector button').forEach(button => {
+            button.addEventListener('click', function() {
+                const ffType = this.getAttribute('data-ff-type');
+                selectFlipFlopType(ffType);
+            });
+        });
+        
+        function selectFlipFlopType(type) {
+            // Update buttons
+            ffOptions.forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.ff-option[data-ff-type="${type}"]`).classList.add('active');
+            
+            // Update content
+            ffContents.forEach(content => content.classList.remove('active'));
+            document.getElementById(`${type}-content`).classList.add('active');
+            
+            // Update simulator if on lab page
+            if (document.getElementById('interactive-lab').classList.contains('active')) {
+                updateSimulatorType(type);
+            }
+        }
+        
+        // Simulator flip-flop type selection
+        document.getElementById('simulatorSelector').addEventListener('click', (e) => {
+            if (e.target.classList.contains('ff-option')) {
+                const type = e.target.getAttribute('data-ff-type');
+                updateSimulatorType(type);
+            }
+        });
+        
+        function updateSimulatorType(type) {
+            // Update selector buttons
+            document.querySelectorAll('#simulatorSelector .ff-option').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`#simulatorSelector .ff-option[data-ff-type="${type}"]`).classList.add('active');
+            
+            // Update simulator state
+            simulatorState.type = type;
+            
+            // Update gate label
+            const labels = {
+                'sr': 'SR Flip-Flop',
+                'jk': 'JK Flip-Flop',
+                'd': 'D Flip-Flop',
+                't': 'T Flip-Flop'
+            };
+            gateLabel.textContent = labels[type];
+            
+            // Show/hide appropriate inputs
+            document.querySelectorAll('.sr-input, .jk-input, .d-input, .t-input').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            if (type === 'sr') {
+                document.querySelectorAll('.sr-input').forEach(el => {
+                    el.style.display = 'block';
+                });
+            } else if (type === 'jk') {
+                document.querySelectorAll('.jk-input').forEach(el => {
+                    el.style.display = 'block';
+                });
+            } else if (type === 'd') {
+                document.querySelectorAll('.d-input').forEach(el => {
+                    el.style.display = 'block';
+                });
+            } else if (type === 't') {
+                document.querySelectorAll('.t-input').forEach(el => {
+                    el.style.display = 'block';
+                });
+            }
+            
+            // Update outputs
+            updateSimulatorOutputs();
+        }
+        
+        // Toggle button functionality
+        toggleButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const inputId = this.id.replace('toggle', '').toLowerCase();
+                
+                // Update simulator state
+                if (inputId === 'clk') {
+                    simulatorState.clk = !simulatorState.clk;
+                    
+                    // Check for rising edge
+                    if (simulatorState.clk && !simulatorState.prevClk) {
+                        handleClockRisingEdge();
+                    }
+                    simulatorState.prevClk = simulatorState.clk;
+                } else {
+                    simulatorState[inputId] = this.classList.contains('active');
+                }
+                
+                // Update outputs
+                updateSimulatorOutputs();
+            });
+        });
+        
+        function handleClockRisingEdge() {
+            // This function is called when clock goes from LOW to HIGH (rising edge)
+            // Update flip-flop state based on current inputs and type
+            
+            if (simulatorState.type === 'sr') {
+                // SR flip-flop logic
+                if (simulatorState.s && !simulatorState.r) {
+                    simulatorState.q = true; // Set
+                } else if (!simulatorState.s && simulatorState.r) {
+                    simulatorState.q = false; // Reset
+                } else if (simulatorState.s && simulatorState.r) {
+                    // Invalid state - in real circuit this is prohibited
+                    // For simulation, we'll set to undefined/random
+                    simulatorState.q = Math.random() > 0.5;
+                }
+                // If S=0, R=0: No change (q remains as is)
+                
+            } else if (simulatorState.type === 'jk') {
+                // JK flip-flop logic
+                if (!simulatorState.j && !simulatorState.k) {
+                    // No change
+                } else if (simulatorState.j && !simulatorState.k) {
+                    simulatorState.q = true; // Set
+                } else if (!simulatorState.j && simulatorState.k) {
+                    simulatorState.q = false; // Reset
+                } else if (simulatorState.j && simulatorState.k) {
+                    simulatorState.q = !simulatorState.q; // Toggle
+                }
+                
+            } else if (simulatorState.type === 'd') {
+                // D flip-flop logic
+                simulatorState.q = simulatorState.d; // Q follows D
+                
+            } else if (simulatorState.type === 't') {
+                // T flip-flop logic
+                if (simulatorState.t) {
+                    simulatorState.q = !simulatorState.q; // Toggle if T=1
+                }
+                // If T=0: No change
+            }
+        }
+        
+        function updateSimulatorOutputs() {
+            // Update Q and Q' outputs
+            outputQ.textContent = simulatorState.q ? '1' : '0';
+            outputQNot.textContent = simulatorState.q ? '0' : '1';
+            
+            // Update output styling
+            if (simulatorState.q) {
+                outputQ.classList.remove('low');
+                outputQ.classList.add('high');
+                outputQNot.classList.remove('high');
+                outputQNot.classList.add('low');
+            } else {
+                outputQ.classList.remove('high');
+                outputQ.classList.add('low');
+                outputQNot.classList.remove('low');
+                outputQNot.classList.add('high');
+            }
+            
+            // Update current state text
+            const stateText = simulatorState.q ? 'Set (1)' : 'Reset (0)';
+            currentState.textContent = stateText;
+            
+            // Special handling for invalid SR state
+            if (simulatorState.type === 'sr' && simulatorState.s && simulatorState.r) {
+                currentState.textContent = 'Invalid (X)';
+                outputQ.textContent = 'X';
+                outputQNot.textContent = 'X';
+                outputQ.classList.remove('high', 'low');
+                outputQNot.classList.remove('high', 'low');
+            }
+        }
+        
+        // Reset simulator
+        resetBtn.addEventListener('click', () => {
+            // Reset all toggle buttons
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                if (btn.id !== 'toggleClk') {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // Reset simulator state
+            simulatorState = {
+                type: simulatorState.type,
+                s: false,
+                r: false,
+                j: false,
+                k: false,
+                d: false,
+                t: false,
+                clk: true,
+                q: false,
+                prevClk: true
+            };
+            
+            // Update outputs
+            updateSimulatorOutputs();
+        });
+        
+        // Random experiment
+        randomExperimentBtn.addEventListener('click', () => {
+            // Randomize inputs based on current flip-flop type
+            if (simulatorState.type === 'sr') {
+                simulatorState.s = Math.random() > 0.5;
+                simulatorState.r = Math.random() > 0.5;
+                
+                // Update toggle buttons
+                document.getElementById('toggleS').classList.toggle('active', simulatorState.s);
+                document.getElementById('toggleR').classList.toggle('active', simulatorState.r);
+                
+            } else if (simulatorState.type === 'jk') {
+                simulatorState.j = Math.random() > 0.5;
+                simulatorState.k = Math.random() > 0.5;
+                
+                document.getElementById('toggleJ').classList.toggle('active', simulatorState.j);
+                document.getElementById('toggleK').classList.toggle('active', simulatorState.k);
+                
+            } else if (simulatorState.type === 'd') {
+                simulatorState.d = Math.random() > 0.5;
+                document.getElementById('toggleD').classList.toggle('active', simulatorState.d);
+                
+            } else if (simulatorState.type === 't') {
+                simulatorState.t = Math.random() > 0.5;
+                document.getElementById('toggleT').classList.toggle('active', simulatorState.t);
+            }
+            
+            // Toggle clock to trigger state change
+            simulatorState.clk = !simulatorState.clk;
+            simulatorState.prevClk = !simulatorState.clk;
+            document.getElementById('toggleClk').classList.toggle('active', simulatorState.clk);
+            
+            // Trigger rising edge if clock went from low to high
+            if (simulatorState.clk) {
+                handleClockRisingEdge();
+            }
+            
+            // Update outputs
+            updateSimulatorOutputs();
+        });
+        
+        // Contact form submission
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all fields before submitting.');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // In a real application, you would send this data to a server
+            // For this demo, we'll just show a success message
+            alert(`Thank you, ${name}! Your message has been sent successfully. We'll get back to you at ${email} within 24-48 hours.`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+        
+        // Read more toggle functionality
+        readMoreToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const content = document.getElementById(targetId);
+                content.classList.toggle('expanded');
+                this.textContent = content.classList.contains('expanded') ? 'Read Less' : 'Read More';
+            });
+        });
+        
+        // Scroll animations
+        function checkScroll() {
+            // Fade in elements
+            fadeInElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+            
+            // Stagger items
+            staggerItems.forEach((element, index) => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 100;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    // Add delay based on index for staggered effect
+                    setTimeout(() => {
+                        element.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }
+        
+        // Initialize scroll animations
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set initial state for simulator
+            updateSimulatorType('sr');
+            
+            // Trigger initial scroll check
+            checkScroll();
+            
+            // Add animation to hero content
+            setTimeout(() => {
+                document.querySelector('.hero-content').classList.add('visible');
+            }, 300);
+        });
+    </script>
+   <script>
+  document.querySelectorAll(".ff-option").forEach(button => {
+    button.addEventListener("click", () => {
+
+      // active button switch
+      document.querySelectorAll(".ff-option")
+        .forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      // scroll to correct content
+      const type = button.dataset.ffType;
+      const target = document.getElementById(`${type}-content`);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+</script>
+<script>
+  window.addEventListener("load", () => {
+    document.querySelectorAll(".icon").forEach((icon, index) => {
+      setTimeout(() => {
+        icon.style.opacity = "1";
+        icon.style.transform = "translateY(0) scale(1)";
+      }, index * 150);
+    });
+  });
+</script>
+<script>
+  const canvas = document.getElementById('bg-particles');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const particles = [];
+  for(let i=0;i<100;i++){
+    particles.push({
+      x: Math.random()*canvas.width,
+      y: Math.random()*canvas.height,
+      r: Math.random()*2+1,
+      dx: Math.random()*0.5-0.25,
+      dy: Math.random()*0.5-0.25
+    });
+  }
+
+  function animateParticles(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p=>{
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,255,255,0.7)';
+      ctx.fill();
+      p.x += p.dx;
+      p.y += p.dy;
+      
+      if(p.x < 0 || p.x > canvas.width) p.dx *= -1;
+      if(p.y < 0 || p.y > canvas.height) p.dy *= -1;
+    });
+    requestAnimationFrame(animateParticles);
+  }
+
+  animateParticles();
+  window.addEventListener('resize', ()=>{
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+</script>
+
+</body>
+</html>
